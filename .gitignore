@@ -23,6 +23,7 @@ pom.xml.*
 #Ant
 build.xml
 local.properties
+project.properties
 proguard.cfg
 
 #Gradle
