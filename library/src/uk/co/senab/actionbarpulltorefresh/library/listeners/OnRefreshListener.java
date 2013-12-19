@@ -22,6 +22,20 @@ import android.view.View;
  * Simple Listener to listen for any callbacks to Refresh.
  */
 public interface OnRefreshListener {
+
+    /**
+     * Called when the user started the pull
+     *
+     */
+    public void onPullStarted();
+
+
+    /**
+     * Called when the user final skip the refresh
+     *
+     */
+    public void onPullCanceled();
+
     /**
      * Called when the user has initiated a refresh by pulling.
      *
@@ -29,4 +43,6 @@ public interface OnRefreshListener {
      *            - View which the user has started the refresh from.
      */
     public void onRefreshStarted(View view);
+
+
 }

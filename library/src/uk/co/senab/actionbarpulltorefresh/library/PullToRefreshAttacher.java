@@ -423,6 +423,9 @@ public class PullToRefreshAttacher {
         if (DEBUG) {
             Log.d(LOG_TAG, "onPullStarted");
         }
+        if (mOnRefreshListener != null) {
+            mOnRefreshListener.onPullStarted();
+        }
         showHeaderView();
         mPullBeginY = y;
     }
@@ -452,6 +455,10 @@ public class PullToRefreshAttacher {
         }
         if (!mIsRefreshing) {
             reset(true);
+
+            if (mOnRefreshListener != null) {
+                mOnRefreshListener.onPullCanceled();
+            }
         }
     }
 
@@ -636,6 +643,10 @@ public class PullToRefreshAttacher {
     protected void removeHeaderViewFromActivity(View headerView) {
         if (headerView.getWindowToken() != null) {
             mActivity.getWindowManager().removeViewImmediate(headerView);
+
+            if (mOnRefreshListener != null) {
+                mOnRefreshListener.onPullCanceled();
+            }
         }
     }
 
